@@ -1,162 +1,108 @@
-//import java.awt.EventQueue;
- 
-import javax.swing.JFrame;
-//import javax.swing.BoxLayout;
-import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.ButtonGroup;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-//import net.miginfocom.swing.MigLayout;
-import javax.swing.JButton;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.JToggleButton;
+import javax.swing.JList;
 import javax.swing.JLabel;
-//import com.jgoodies.forms.factories.DefaultComponentFactory;
- 
-public class GUI {
-    private JFrame frame;
-    private JScrollPane scrollPane;
-    private JTextField typeField;
-    private JButton btnSenden;
-    private JTextArea textArea;
-    private JTextField nameField;
-    private JLabel lblDeinName;
- 
-    /**
-     * @return the frame
-     */
-    public JFrame getFrame() {
-        return frame;
-    }
- 
-    /**
-     * @return the scrollPane
-     */
-    public JScrollPane getScrollPane() {
-        return scrollPane;
-    }
- 
-    /**
-     * @return the typeField
-     */
-    public JTextField getTypeField() {
-        return typeField;
-    }
- 
-    /**
-     * @return the btnSenden
-     */
-    public JButton getBtnSenden() {
-        return btnSenden;
-    }
- 
-    /**
-     * @return the textArea
-     */
-    public JTextArea getTextArea() {
-        return textArea;
-    }
- 
-    /**
-     * @return the nameField
-     */
-    public JTextField getNameField() {
-        return nameField;
-    }
- 
-    /**
-     * @return the lblDeinName
-     */
-    public JLabel getLblDeinName() {
-        return lblDeinName;
-    }
- 
-    /**
-     * @param frame the frame to set
-     */
-    public void setFrame(final JFrame frame) {
-        this.frame = frame;
-    }
 
-    /**
-     * @param scrollPane the scrollPane to set
-     */
-    public void setScrollPane(final JScrollPane scrollPane) {
-        this.scrollPane = scrollPane;
-    }
+public class GUI{
 
-    /**
-     * @param typeField the typeField to set
-     */
-    public void setTypeField(final JTextField typeField) {
-        this.typeField = typeField;
-    }
+public void initialize(){
 
-    /**
-     * @param btnSenden the btnSenden to set
-     */
-    public void setBtnSenden(final JButton btnSenden) {
-        this.btnSenden = btnSenden;
-    }
+JPanel pnPanel0;
+ButtonGroup rbgPanel0;
+JTextArea taArea0;
+JTextField tfText0;
+JToggleButton tbtTglBut0;
+JList lsList0;
+JTextField tfText1;
+JLabel lbLabel0;
 
-    /**
-     * @param textArea the textArea to set
-     */
-    public void setTextArea(final JTextArea textArea) {
-        this.textArea = textArea;
-    }
+pnPanel0 = new JPanel();
+pnPanel0.setBorder( BorderFactory.createTitledBorder( "Tabelle_namen" ) );
+rbgPanel0 = new ButtonGroup();
+GridBagLayout gbPanel0 = new GridBagLayout();
+GridBagConstraints gbcPanel0 = new GridBagConstraints();
+pnPanel0.setLayout( gbPanel0 );
 
-    /**
-     * @param nameField the nameField to set
-     */
-    public void setNameField(final JTextField nameField) {
-        this.nameField = nameField;
-    }
+taArea0 = new JTextArea(2,10);
+gbcPanel0.gridx = 0;
+gbcPanel0.gridy = 0;
+gbcPanel0.gridwidth = 17;
+gbcPanel0.gridheight = 17;
+gbcPanel0.fill = GridBagConstraints.BOTH;
+gbcPanel0.weightx = 1;
+gbcPanel0.weighty = 1;
+gbcPanel0.anchor = GridBagConstraints.NORTH;
+gbPanel0.setConstraints( taArea0, gbcPanel0 );
+pnPanel0.add( taArea0 );
 
-    /**
-     * @param lblDeinName the lblDeinName to set
-     */
-    public void setLblDeinName(final JLabel lblDeinName) {
-        this.lblDeinName = lblDeinName;
-    }
+tfText0 = new JTextField( );
+gbcPanel0.gridx = 0;
+gbcPanel0.gridy = 17;
+gbcPanel0.gridwidth = 17;
+gbcPanel0.gridheight = 3;
+gbcPanel0.fill = GridBagConstraints.BOTH;
+gbcPanel0.weightx = 1;
+gbcPanel0.weighty = 0;
+gbcPanel0.anchor = GridBagConstraints.NORTH;
+gbPanel0.setConstraints( tfText0, gbcPanel0 );
+pnPanel0.add( tfText0 );
 
-    /**
-     * Create the application.
-     */
-    public GUI(final Client m) {
-        initialize(m);
-    }
+tbtTglBut0 = new JToggleButton( "send_button"  );
+rbgPanel0.add( tbtTglBut0 );
+gbcPanel0.gridx = 17;
+gbcPanel0.gridy = 17;
+gbcPanel0.gridwidth = 1;
+gbcPanel0.gridheight = 3;
+gbcPanel0.fill = GridBagConstraints.BOTH;
+gbcPanel0.weightx = 1;
+gbcPanel0.weighty = 0;
+gbcPanel0.anchor = GridBagConstraints.NORTH;
+gbPanel0.setConstraints( tbtTglBut0, gbcPanel0 );
+pnPanel0.add( tbtTglBut0 );
 
-    /**
-     * Initialize the contents of the frame.
-     */
-    private void initialize(final Client m) {
-        frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.getContentPane().setLayout(new MigLayout("", "[grow][grow]", "[][grow][]"));
-         
-        //lblDeinName = DefaultComponentFactory.getInstance().createLabel("Dein Name:");
-        frame.getContentPane().add(lblDeinName, "cell 0 0,alignx trailing");
-         
-        nameField = new JTextField();
-        nameField.setText("nameField");
-        frame.getContentPane().add(nameField, "cell 1 0,growx");
-        nameField.setColumns(10);
-         
-        scrollPane = new JScrollPane();
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        frame.getContentPane().add(scrollPane, "cell 0 1 2 1,grow");
-         
-        textArea = new JTextArea();
-        scrollPane.setViewportView(textArea);
-         
-        typeField = new JTextField();
-        frame.getContentPane().add(typeField, "cell 0 2,growx");
-        typeField.setColumns(10);
-         
-        btnSenden = new JButton("Senden");
-        btnSenden.setActionCommand("send");
-        //btnSenden.addActionListener(new ChatController(this, m));
-        frame.getContentPane().add(btnSenden, "cell 1 2");
-    }
- 
+String []dataList0 = { "User:" };
+lsList0 = new JList( dataList0 );
+gbcPanel0.gridx = 17;
+gbcPanel0.gridy = 2;
+gbcPanel0.gridwidth = 1;
+gbcPanel0.gridheight = 15;
+gbcPanel0.fill = GridBagConstraints.BOTH;
+gbcPanel0.weightx = 1;
+gbcPanel0.weighty = 1;
+gbcPanel0.anchor = GridBagConstraints.NORTH;
+gbPanel0.setConstraints( lsList0, gbcPanel0 );
+pnPanel0.add( lsList0 );
+
+tfText1 = new JTextField( );
+gbcPanel0.gridx = 17;
+gbcPanel0.gridy = 1;
+gbcPanel0.gridwidth = 1;
+gbcPanel0.gridheight = 1;
+gbcPanel0.fill = GridBagConstraints.BOTH;
+gbcPanel0.weightx = 1;
+gbcPanel0.weighty = 0;
+gbcPanel0.anchor = GridBagConstraints.NORTH;
+gbPanel0.setConstraints( tfText1, gbcPanel0 );
+pnPanel0.add( tfText1 );
+
+lbLabel0 = new JLabel( "Wähle deinen Namen:"  );
+gbcPanel0.gridx = 17;
+gbcPanel0.gridy = 0;
+gbcPanel0.gridwidth = 1;
+gbcPanel0.gridheight = 1;
+gbcPanel0.fill = GridBagConstraints.BOTH;
+gbcPanel0.weightx = 1;
+gbcPanel0.weighty = 1;
+gbcPanel0.anchor = GridBagConstraints.NORTH;
+gbPanel0.setConstraints( lbLabel0, gbcPanel0 );
+pnPanel0.add( lbLabel0 );
+
+}
 }
