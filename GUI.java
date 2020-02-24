@@ -26,9 +26,8 @@ public class GUI extends JFrame implements ActionListener
 
         public void iniz(){
             
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(150, 150, 500, 350);
-        setSize(500,500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new BorderLayout(0, 0));
@@ -54,10 +53,18 @@ public class GUI extends JFrame implements ActionListener
 
     }
 
-    public static void main(final String[] args) {
-        final GUI aufrufen = new GUI();
-        aufrufen.setVisible(true);
-        aufrufen.iniz();
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    GUI aufrufen = new GUI();
+                    aufrufen.setVisible(true);
+                    aufrufen.iniz();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /*
