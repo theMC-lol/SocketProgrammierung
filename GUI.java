@@ -80,8 +80,13 @@ public class GUI extends JFrame implements ActionListener
             textField_1.setEnabled(false);
         }
         if(ae.getSource() == this.textField){
-            lblNewLabel.setText((textField_1.getText() + ": " + textField.getText()));
-            textField.setText((""));
+            if(textField_1.getText().length() != 0){
+                lblNewLabel.setText((textField_1.getText() + ": " + textField.getText()));
+                textField.setText((""));
+            }
+            else {
+                lblNewLabel.setText(("BITTE NAMEN EINGEBEN"));
+            }
         }
     }
 }
