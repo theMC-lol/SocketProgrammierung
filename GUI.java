@@ -4,15 +4,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.JTextComponent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JButton;
 import javax.swing.SwingConstants;
-import javax.swing.JProgressBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener
 {
@@ -22,7 +18,6 @@ public class GUI extends JFrame implements ActionListener
     private JTextField textField_1;
     private JLabel lblNewLabel;
     private JLabel lblNewLabel_1;
-
 
         public void iniz(){
             
@@ -50,17 +45,16 @@ public class GUI extends JFrame implements ActionListener
         textField_1.addActionListener(this);
         contentPane.add(textField_1, BorderLayout.NORTH);
         textField_1.setColumns(10);
-
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    GUI aufrufen = new GUI();
+                    final GUI aufrufen = new GUI();
                     aufrufen.setVisible(true);
                     aufrufen.iniz();
-                } catch (Exception e) {
+                } catch (final Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -71,6 +65,14 @@ public class GUI extends JFrame implements ActionListener
      * public void actionPerformed(ActionEvent eve) {
      * JOptionPane.showMessageDialog(rootPane, eve.getActionCommand()); }
      */
+
+    public String getTextFieldName(JTextField textField){
+        return textField.getText();
+    }
+
+    public String getTextFiel_1dName(JTextField textField_1){
+        return textField_1.getText();
+    }
 
     public void actionPerformed (final ActionEvent ae){
         if(ae.getSource() == this.textField_1){
