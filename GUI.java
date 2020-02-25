@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class GUI extends JFrame implements ActionListener
 {
@@ -75,16 +76,18 @@ public class GUI extends JFrame implements ActionListener
             // die dann aufgerufen wird mit den eingaben
             lblNewLabel_1.setText((textField_1.getText()));
             textField_1.setEnabled(false);
-    }
+        }
         if(ae.getSource() == this.textField){
             if(textField_1.getText().length() != 0){
                 // Hier muss statt dem direten Eintragen am besten ein Array im Server zum speichern
                 // die dann aufgerufen wird mit den eingaben
-                lblNewLabel.setText((textField_1.getText() + ": " + textField.getText()));
+                lblNewLabel.setText((textField_1.getText() + ": " + textField.getText()+ "\n"));
                 textField.setText((""));
             }
             else {
-                lblNewLabel.setText(("BITTE NAMEN EINGEBEN"));
+                String message = "\"BITTE ZUERST NAMEN OBEN EINGEBEN\"\n";
+                JOptionPane.showMessageDialog(new JFrame(), message, "Error",
+                JOptionPane.ERROR_MESSAGE);
             }
         }
     }
