@@ -10,7 +10,7 @@ public class Server
         try
         {
             server = new ServerSocket(port);
-            server.setSoTimeout(1000000);
+            server.setSoTimeout(100000);
         }
         catch (SocketException e)
         {

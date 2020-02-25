@@ -1,4 +1,5 @@
-
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -10,6 +11,17 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+
+class chatAktualisieren extends TimerTask{
+    public chatAktualisieren()
+    {
+        
+    }
+    public void run()
+    {
+
+    }
+}
 
 public class GUI extends JFrame implements ActionListener
 {
@@ -37,8 +49,9 @@ public class GUI extends JFrame implements ActionListener
         textField.addActionListener(this);
         contentPane.add(textField, BorderLayout.SOUTH);
         textField.setColumns(10);
+        textField.setEnabled(false);
         
-        lblNewLabel_1 = new JLabel("Liste User");
+        lblNewLabel_1 = new JLabel("Mitglieder");
         lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
         contentPane.add(lblNewLabel_1, BorderLayout.EAST);
         
@@ -46,6 +59,12 @@ public class GUI extends JFrame implements ActionListener
         textField_1.addActionListener(this);
         contentPane.add(textField_1, BorderLayout.NORTH);
         textField_1.setColumns(10);
+        textField_1.setText("Bitte Namen eingeben");
+
+        
+        //Timer starten und Aktualisieren
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new chatAktualisieren(), 0, 1000);
     }
 
     public static void main(final String[] args) {
@@ -70,21 +89,28 @@ public class GUI extends JFrame implements ActionListener
         return textField_1.getText();
     }
 
+
     public void actionPerformed (final ActionEvent ae){
         if(ae.getSource() == this.textField_1){
-            // Hier muss statt dem direten Eintragen am besten ein Array im Server zum speichern
-            // die dann aufgerufen wird mit den eingaben
-            lblNewLabel_1.setText((textField_1.getText()));
+            if(this.textField_1.getText() != "")
+            {
             textField_1.setEnabled(false);
+            textField.setEnabled(true);
+            }
+            else 
+            {
+                String message = "\"BITTE ZUERST NAMEN OBEN EINGEBEN\"\n";
+                JOptionPane.showMessageDialog(new JFrame(), message, "Error",
+                JOptionPane.ERROR_MESSAGE);
+            }
         }
         if(ae.getSource() == this.textField){
             if(textField_1.getText().length() != 0){
-                // Hier muss statt dem direten Eintragen am besten ein Array im Server zum speichern
-                // die dann aufgerufen wird mit den eingaben
-                lblNewLabel.setText((textField_1.getText() + ": " + textField.getText()+ "\n"));
+                Client.senden(textField_1.getText(), textField.getText());
                 textField.setText((""));
             }
-            else {
+            else 
+            {
                 String message = "\"BITTE ZUERST NAMEN OBEN EINGEBEN\"\n";
                 JOptionPane.showMessageDialog(new JFrame(), message, "Error",
                 JOptionPane.ERROR_MESSAGE);
