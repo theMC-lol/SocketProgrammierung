@@ -76,11 +76,11 @@ public class GUI extends JFrame implements ActionListener
 
     public void actionPerformed (final ActionEvent ae){
         if(ae.getSource() == this.textField_1){
-            lblNewLabel_1.setText(("Hier den Namen an den Server"));
+            lblNewLabel_1.setText((textField_1.getText()));
             textField_1.setEnabled(false);
         }
         if(ae.getSource() == this.textField){
-            lblNewLabel.setText(("Hier die Chatnachricht an den Server"));
+            lblNewLabel.setText((textField_1.getText() + ": " + textField.getText()));
             textField.setText((""));
         }
     }
