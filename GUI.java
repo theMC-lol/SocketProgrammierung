@@ -23,7 +23,7 @@ public class GUI extends JFrame implements ActionListener
         public void iniz(){
             
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(150, 150, 500, 350);
+        setBounds(500, 250, 500, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new BorderLayout(0, 0));
