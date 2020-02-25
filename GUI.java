@@ -75,7 +75,7 @@ public class GUI extends JFrame implements ActionListener
             // die dann aufgerufen wird mit den eingaben
             lblNewLabel_1.setText((textField_1.getText()));
             textField_1.setEnabled(false);
-        }
+    }
         if(ae.getSource() == this.textField){
             if(textField_1.getText().length() != 0){
                 // Hier muss statt dem direten Eintragen am besten ein Array im Server zum speichern
