@@ -1,7 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.security.auth.x500.X500Principal;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -52,7 +50,6 @@ public class GUI extends JFrame implements ActionListener
         contentPane.add(textField_1, BorderLayout.NORTH);
         textField_1.setColumns(10);
         textField_1.setText("Bitte Namen eingeben");
-
     }
 
     public static void main(final String[] args) {
@@ -60,7 +57,7 @@ public class GUI extends JFrame implements ActionListener
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    final GUI aufrufen = new GUI();
+                    GUI aufrufen = new GUI();
                     aufrufen.setVisible(true);
                     aufrufen.iniz();
                 } catch (final Exception e) {
@@ -96,6 +93,7 @@ public class GUI extends JFrame implements ActionListener
             if(textField_1.getText().length() != 0){
                 Client.senden(textField_1.getText(), textField.getText());
                 textField.setText((""));
+                //GUI this = new GUI();
                 new ChatController(this);
             }
             else 
