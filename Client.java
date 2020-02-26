@@ -7,12 +7,11 @@ public class Client
 
     public static void senden (String name, String nachricht)
     {
-        System.out.println("Funktionsaufruf");
         try
         {
             Socket client = new Socket(ipAdresse, 5000);
             DataOutputStream output = new DataOutputStream(client.getOutputStream());
-            output.writeUTF(name + " :\t" + nachricht);
+            output.writeUTF(name + " :\t" + nachricht + "\n");
             DataInputStream input = new DataInputStream(client.getInputStream());
             System.out.println(input.readUTF());
             client.close();
@@ -28,7 +27,7 @@ public class Client
         System.out.println("Chatabfrage");
         try
         {
-            Socket client = new Socket(ipAdresse, 5001);
+            Socket client = new Socket(ipAdresse, 5000);
             DataInputStream input = new DataInputStream(client.getInputStream());
             client.close();
             return input.toString();

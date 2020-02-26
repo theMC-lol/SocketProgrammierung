@@ -41,7 +41,7 @@ public class GUI extends JFrame implements ActionListener
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
         
-        lblNewLabel = new JLabel("Hier der Chat");
+        lblNewLabel = new JLabel("Florian: \t noch mehr text \n Tayfun \t auch hier?");
         lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
         contentPane.add(lblNewLabel, BorderLayout.CENTER);
         
@@ -63,8 +63,8 @@ public class GUI extends JFrame implements ActionListener
 
         
         //Timer starten und Aktualisieren
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new chatAktualisieren(), 0, 1000);
+        // Timer timer = new Timer();
+        // timer.scheduleAtFixedRate(new chatAktualisieren(), 0, 1000);
     }
 
     public static void main(final String[] args) {
@@ -94,8 +94,8 @@ public class GUI extends JFrame implements ActionListener
         if(ae.getSource() == this.textField_1){
             if(this.textField_1.getText() != "")
             {
-            textField_1.setEnabled(false);
-            textField.setEnabled(true);
+                textField_1.setEnabled(false);
+                textField.setEnabled(true);
             }
             else 
             {

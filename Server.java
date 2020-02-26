@@ -4,6 +4,7 @@ import java.io.*;
 public class Server 
 {
     private ServerSocket server;
+    public String chatLog = "";
 
     public Server(int port)
     {
@@ -32,10 +33,11 @@ public class Server
                 System.out.println("Waiting for Client..." + server.getLocalPort());
                 Socket client = server.accept();
                 DataInputStream input = new DataInputStream(client.getInputStream());
-                System.out.println(input.readUTF());
-                System.out.println(client.getRemoteSocketAddress());
+                chatLog += input.readUTF().toString();
+                //System.out.println(input.readUTF());
+                //System.out.println(chatLog);
                 DataOutputStream output = new DataOutputStream(client.getOutputStream());
-                output.writeUTF("Greeting Summoner");
+                output.writeUTF(chatLog);
                 client.close();
             }
             catch(Exception e)
