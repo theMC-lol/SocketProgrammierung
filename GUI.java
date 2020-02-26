@@ -50,6 +50,9 @@ public class GUI extends JFrame implements ActionListener
         contentPane.add(textField_1, BorderLayout.NORTH);
         textField_1.setColumns(10);
         textField_1.setText("Bitte Namen eingeben");
+
+        
+        new ChatController(this);
     }
 
     public static void main(final String[] args) {
@@ -94,7 +97,6 @@ public class GUI extends JFrame implements ActionListener
                 Client.senden(textField_1.getText(), textField.getText());
                 textField.setText((""));
                 //GUI this = new GUI();
-                new ChatController(this);
             }
             else 
             {

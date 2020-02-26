@@ -30,12 +30,10 @@ public class Server
         {
             try
             {
-                System.out.println("Waiting for Client..." + server.getLocalPort());
+                //System.out.println("Waiting for Client..." + server.getLocalPort());
                 Socket client = server.accept();
                 DataInputStream input = new DataInputStream(client.getInputStream());
                 chatLog += input.readUTF().toString();
-                //System.out.println(input.readUTF());
-                //System.out.println(chatLog);
                 DataOutputStream output = new DataOutputStream(client.getOutputStream());
                 output.writeUTF(chatLog);
                 client.close();

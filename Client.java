@@ -7,11 +7,12 @@ public class Client
 
     public static void senden (String name, String nachricht)
     {
+        //System.out.println("Sendet");
         try
         {
             Socket client = new Socket(ipAdresse, 5000);
             DataOutputStream output = new DataOutputStream(client.getOutputStream());
-            output.writeUTF(name + " :\t" + nachricht + "\n");
+            output.writeUTF(name + " :\t" + nachricht +"\n");
             DataInputStream input = new DataInputStream(client.getInputStream());
             System.out.println(input.readUTF());
             client.close();
@@ -24,13 +25,16 @@ public class Client
     
     public static String chatAbfrage()
     {
-        System.out.println("Chatabfrage");
+        //System.out.println("Chatabfrage");
         try
         {
             Socket client = new Socket(ipAdresse, 5000);
+            DataOutputStream output = new DataOutputStream(client.getOutputStream());
+            output.writeUTF("");
             DataInputStream input = new DataInputStream(client.getInputStream());
+            String a =  input.readUTF().toString();
             client.close();
-            return input.readUTF().toString();
+            return a;
         }
         catch (IOException e)
         {
