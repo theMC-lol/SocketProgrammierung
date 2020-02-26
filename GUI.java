@@ -1,7 +1,7 @@
-import java.util.Timer;
-import java.util.TimerTask;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
+import javax.security.auth.x500.X500Principal;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,37 +11,9 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
- 
-class ChatController{
-    private GUI v;
-    private Client m;
-    public ChatController(GUI v, Client m) {
-        super();
-        this.v = v;
-        this.m = m;
-         
-        Timer timer = new Timer();
-         
-        timer.scheduleAtFixedRate(new chatAktualisieren(m, v), 0, 1000);
-    }
-}
-class chatAktualisieren extends TimerTask{
-    private GUI v;
-    public chatAktualisieren(Client m, GUI v) {
-        super();
-        this.v = v;
-    }
-
-    public void run()
-    {
-        String temp = Client.chatAbfrage();
-        v.lblNewLabel().setText(temp);
-    }
-}
 
 public class GUI extends JFrame implements ActionListener
 {
-
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
@@ -80,9 +52,11 @@ public class GUI extends JFrame implements ActionListener
         contentPane.add(textField_1, BorderLayout.NORTH);
         textField_1.setColumns(10);
         textField_1.setText("Bitte Namen eingeben");
+
     }
 
     public static void main(final String[] args) {
+        
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -122,6 +96,7 @@ public class GUI extends JFrame implements ActionListener
             if(textField_1.getText().length() != 0){
                 Client.senden(textField_1.getText(), textField.getText());
                 textField.setText((""));
+                new ChatController(this);
             }
             else 
             {
