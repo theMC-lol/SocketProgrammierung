@@ -11,8 +11,20 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-
-
+ 
+class ChatController{
+    private GUI v;
+    private Client m;
+    public ChatController(GUI v, Client m) {
+        super();
+        this.v = v;
+        this.m = m;
+         
+        Timer timer = new Timer();
+         
+        timer.scheduleAtFixedRate(new chatAktualisieren(m, v), 0, 1000);
+    }
+}
 class chatAktualisieren extends TimerTask{
     private GUI v;
     public chatAktualisieren(Client m, GUI v) {
@@ -70,12 +82,6 @@ public class GUI extends JFrame implements ActionListener
         textField_1.setText("Bitte Namen eingeben");
     }
 
-    public void ChatController(GUI v, Client m) {
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new chatAktualisieren(m,v), 0, 1000);
-        }
-    
-
     public static void main(final String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -97,7 +103,6 @@ public class GUI extends JFrame implements ActionListener
     public String getTextFiel_1dName(JTextField textField_1){
         return textField_1.getText();
     }
-
     
     public void actionPerformed (final ActionEvent ae){
         if(ae.getSource() == this.textField_1){
