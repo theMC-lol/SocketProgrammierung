@@ -12,14 +12,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
+
 class chatAktualisieren extends TimerTask{
-    public chatAktualisieren()
-    {
-        
+    private GUI v;
+    public chatAktualisieren(Client m, GUI v) {
+        super();
+        this.v = v;
     }
+
     public void run()
     {
-
+        String temp = Client.chatAbfrage();
+        v.lblNewLabel().setText(temp);
     }
 }
 
@@ -31,41 +35,46 @@ public class GUI extends JFrame implements ActionListener
     private JTextField textField_1;
     private JLabel lblNewLabel;
     private JLabel lblNewLabel_1;
+    
+    public JLabel lblNewLabel() {
+        return lblNewLabel;
+    }
 
-        public void iniz(){
-            
+    public void iniz() {
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 250, 500, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
-        
+
         lblNewLabel = new JLabel("Florian: \t noch mehr text \n Tayfun \t auch hier?");
         lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
         contentPane.add(lblNewLabel, BorderLayout.CENTER);
-        
+
         textField = new JTextField();
         textField.addActionListener(this);
         contentPane.add(textField, BorderLayout.SOUTH);
         textField.setColumns(10);
         textField.setEnabled(false);
-        
+
         lblNewLabel_1 = new JLabel("Mitglieder");
         lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
         contentPane.add(lblNewLabel_1, BorderLayout.EAST);
-        
+
         textField_1 = new JTextField();
         textField_1.addActionListener(this);
         contentPane.add(textField_1, BorderLayout.NORTH);
         textField_1.setColumns(10);
         textField_1.setText("Bitte Namen eingeben");
-
-        
-        //Timer starten und Aktualisieren
-        // Timer timer = new Timer();
-        // timer.scheduleAtFixedRate(new chatAktualisieren(), 0, 1000);
     }
+
+    public void ChatController(GUI v, Client m) {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new chatAktualisieren(m,v), 0, 1000);
+        }
+    
 
     public static void main(final String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -89,7 +98,7 @@ public class GUI extends JFrame implements ActionListener
         return textField_1.getText();
     }
 
-
+    
     public void actionPerformed (final ActionEvent ae){
         if(ae.getSource() == this.textField_1){
             if(this.textField_1.getText() != "")

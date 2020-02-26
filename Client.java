@@ -30,7 +30,7 @@ public class Client
             Socket client = new Socket(ipAdresse, 5000);
             DataInputStream input = new DataInputStream(client.getInputStream());
             client.close();
-            return input.toString();
+            return input.readUTF().toString();
         }
         catch (IOException e)
         {
