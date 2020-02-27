@@ -12,7 +12,7 @@ public class Client
         {
             Socket client = new Socket(ipAdresse, 5000);
             DataOutputStream output = new DataOutputStream(client.getOutputStream());
-            output.writeUTF(name + " :\t" + nachricht +"\n");
+            output.writeUTF(name + " :  " + nachricht +"\n");
             DataInputStream input = new DataInputStream(client.getInputStream());
             System.out.println(input.readUTF());
             client.close();
@@ -32,15 +32,15 @@ public class Client
             DataOutputStream output = new DataOutputStream(client.getOutputStream());
             output.writeUTF("");
             DataInputStream input = new DataInputStream(client.getInputStream());
-            String a =  input.readUTF().toString();
+            String a =input.readUTF().toString();
             client.close();
-            return a;
+            return a ;
         }
         catch (IOException e)
         {
             e.printStackTrace();
             return null;
         }
-        
+
     }
 }

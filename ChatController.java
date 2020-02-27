@@ -19,6 +19,6 @@ class chatAktualisieren extends TimerTask{
 
     public void run()
     {
-        v.lblNewLabel().setText(Client.chatAbfrage().toString());
+        v.lblNewLabel().setText(Client.chatAbfrage().toString()+"\n");
     }
 }

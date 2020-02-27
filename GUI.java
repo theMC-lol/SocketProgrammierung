@@ -1,7 +1,9 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -15,10 +17,10 @@ public class GUI extends JFrame implements ActionListener
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
-    private JLabel lblNewLabel;
-    private JLabel lblNewLabel_1;
+    private JTextArea lblNewLabel;
+    private JTextArea lblNewLabel_1;
     
-    public JLabel lblNewLabel() {
+    public JTextArea lblNewLabel() {
         return lblNewLabel;
     }
 
@@ -31,8 +33,9 @@ public class GUI extends JFrame implements ActionListener
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
 
-        lblNewLabel = new JLabel("Florian: \t noch mehr text \n Tayfun \t auch hier?");
-        lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
+        lblNewLabel = new JTextArea("");
+        //lblNewLabel.setEnabled(false);
+        lblNewLabel.setForeground(Color.black);
         contentPane.add(lblNewLabel, BorderLayout.CENTER);
 
         textField = new JTextField();
@@ -41,8 +44,7 @@ public class GUI extends JFrame implements ActionListener
         textField.setColumns(10);
         textField.setEnabled(false);
 
-        lblNewLabel_1 = new JLabel("Mitglieder");
-        lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
+        lblNewLabel_1 = new JTextArea("Mitglieder");
         contentPane.add(lblNewLabel_1, BorderLayout.EAST);
 
         textField_1 = new JTextField();
@@ -96,7 +98,6 @@ public class GUI extends JFrame implements ActionListener
             if(textField_1.getText().length() != 0){
                 Client.senden(textField_1.getText(), textField.getText());
                 textField.setText((""));
-                //GUI this = new GUI();
             }
             else 
             {
