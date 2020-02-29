@@ -15,13 +15,13 @@ public class GUI extends JFrame implements ActionListener
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
-    private JTextArea lblNewLabel;
-    private JTextArea lblNewLabel_1;
+    private JTextArea TextArea;
+    private JTextArea TextArea_1;
     
-    public JTextArea lblNewLabel() {
-        return lblNewLabel;
+    public JTextArea TextArea() {
+        return TextArea;
     }
-
+    
     public void iniz() {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,10 +31,9 @@ public class GUI extends JFrame implements ActionListener
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
 
-        lblNewLabel = new JTextArea("");
-        //lblNewLabel.setEnabled(false);
-        lblNewLabel.setForeground(Color.black);
-        contentPane.add(lblNewLabel, BorderLayout.CENTER);
+        TextArea = new JTextArea("");
+        TextArea.setForeground(Color.black);
+        contentPane.add(TextArea, BorderLayout.CENTER);
 
         textField = new JTextField();
         textField.addActionListener(this);
@@ -42,8 +41,8 @@ public class GUI extends JFrame implements ActionListener
         textField.setColumns(10);
         textField.setEnabled(false);
 
-        lblNewLabel_1 = new JTextArea("Mitglieder");
-        contentPane.add(lblNewLabel_1, BorderLayout.EAST);
+        TextArea_1 = new JTextArea("Mitglieder");
+        contentPane.add(TextArea_1, BorderLayout.EAST);
 
         textField_1 = new JTextField();
         textField_1.addActionListener(this);
