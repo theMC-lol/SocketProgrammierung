@@ -30,7 +30,7 @@ public class Server
         {
             try
             {
-                //System.out.println("Waiting for Client..." + server.getLocalPort());
+                System.out.println("Waiting for Client..." + server.getLocalPort());
                 Socket client = server.accept();
                 DataInputStream input = new DataInputStream(client.getInputStream());
                 chatLog += input.readUTF().toString();
@@ -48,7 +48,7 @@ public class Server
     }
     public static void main (String[]args)
     {
-        Server s  = new Server(5000);
+        Server s  = new Server(80);
         s.laufen();
     }
 }

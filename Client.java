@@ -10,7 +10,7 @@ public class Client
         //System.out.println("Sendet");
         try
         {
-            Socket client = new Socket(ipAdresse, 5000);
+            Socket client = new Socket(ipAdresse, 80);
             DataOutputStream output = new DataOutputStream(client.getOutputStream());
             output.writeUTF(name + " :  " + nachricht +"\n");
             DataInputStream input = new DataInputStream(client.getInputStream());
@@ -28,7 +28,7 @@ public class Client
         //System.out.println("Chatabfrage");
         try
         {
-            Socket client = new Socket(ipAdresse, 5000);
+            Socket client = new Socket(ipAdresse, 80);
             DataOutputStream output = new DataOutputStream(client.getOutputStream());
             output.writeUTF("");
             DataInputStream input = new DataInputStream(client.getInputStream());
